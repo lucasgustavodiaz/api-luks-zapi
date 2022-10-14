@@ -7,7 +7,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Data base directories
-*.db
+.db/*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
