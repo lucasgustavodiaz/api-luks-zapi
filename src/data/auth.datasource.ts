@@ -13,6 +13,9 @@ export default class AuthDatasource implements AuthRepository {
       where: {
         email: data.email,
       },
+      include: {
+        role: true,
+      },
     });
     if (!existUser) {
       return null;
@@ -32,6 +35,10 @@ export default class AuthDatasource implements AuthRepository {
       email: existUser.email,
       token,
       expiresIn: 60 * 60 * 1000,
+      role: {
+        roleId: existUser.roleId,
+        roleName: existUser.role.role,
+      },
     };
   }
 
@@ -57,6 +64,10 @@ export default class AuthDatasource implements AuthRepository {
         name: data.name,
         email: data.email,
         password: hasPassword,
+        roleId: data.roleId,
+      },
+      include: {
+        role: true,
       },
     });
 
@@ -68,6 +79,10 @@ export default class AuthDatasource implements AuthRepository {
       email: user.email,
       token,
       expiresIn: 60 * 60 * 1000,
+      role: {
+        roleId: user.roleId,
+        roleName: user.role.role,
+      },
     };
   }
 

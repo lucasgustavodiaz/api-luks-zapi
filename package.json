@@ -1,11 +1,18 @@
 {
   "name": "api-luks-zapi",
   "version": "1.0.0",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn ./src/server"
+    "dev": "ts-node-dev --respawn ./src/server",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate",
+    "seed": "prisma db seed --preview-feature",
+    "studio": "prisma studio"
   },
   "keywords": [],
   "author": "",

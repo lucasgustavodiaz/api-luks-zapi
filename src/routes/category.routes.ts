@@ -1,8 +1,15 @@
 import { Router } from 'express';
-import { createCategory } from '../controllers/category.controller';
+import {
+  createCategory,
+  getCategory,
+} from '../controllers/category.controller';
+
+import { protect, authorized } from '../middlewares/auth';
 
 const router = Router();
 
-router.post('/', createCategory);
+router
+  .get('/', getCategory)
+  .post('/', protect, authorized('admin'), createCategory);
 
 export default router;
