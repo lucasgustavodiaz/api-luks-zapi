@@ -6,9 +6,14 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 
+import { Result } from '../core/types/response';
+import { NotFoundError } from '../errors/not-found-error';
+import { BadRequestError } from '../errors/bad-request-error';
+
 export default class AuthDatasource implements AuthRepository {
-  public async login(data: AuthLogin): Promise<AuthDto | null> {
+  public async login(data: AuthLogin): Promise<Result<AuthDto>> {
     //Check que user no exista en la db
+    //TODO: se podria hacer un try/catch en la consulta a la db
     const existUser = await prisma.user.findUnique({
       where: {
         email: data.email,
@@ -18,31 +23,37 @@ export default class AuthDatasource implements AuthRepository {
       },
     });
     if (!existUser) {
-      return null;
+      return { success: false, err: new NotFoundError() };
     }
 
     const isMatch = await this.matchPassword(existUser, data.password);
 
     if (!isMatch) {
-      return null;
+      return {
+        success: false,
+        err: new BadRequestError('Error en usuario o contraseña'),
+      };
     }
 
     const token = this.getSignedToken(existUser);
 
     return {
-      userId: existUser.id,
-      name: existUser.name,
-      email: existUser.email,
-      token,
-      expiresIn: 60 * 60 * 1000,
-      role: {
-        roleId: existUser.roleId,
-        roleName: existUser.role.role,
+      success: true,
+      result: {
+        userId: existUser.id,
+        name: existUser.name,
+        email: existUser.email,
+        token,
+        expiresIn: 60 * 60 * 1000,
+        role: {
+          roleId: existUser.roleId,
+          roleName: existUser.role.role,
+        },
       },
     };
   }
 
-  public async signin(data: AuthSignIn): Promise<AuthDto | null> {
+  public async signin(data: AuthSignIn): Promise<Result<AuthDto>> {
     //Verificar que user no exista en la db
     const existUser = await prisma.user.findUnique({
       where: {
@@ -51,7 +62,10 @@ export default class AuthDatasource implements AuthRepository {
     });
 
     if (existUser) {
-      return null;
+      return {
+        success: false,
+        err: new BadRequestError('Este usuario ya existe'),
+      };
     }
 
     //Crear un hash del password
@@ -74,14 +88,17 @@ export default class AuthDatasource implements AuthRepository {
     const token = this.getSignedToken(user);
 
     return {
-      userId: user.id,
-      name: user.name,
-      email: user.email,
-      token,
-      expiresIn: 60 * 60 * 1000,
-      role: {
-        roleId: user.roleId,
-        roleName: user.role.role,
+      success: true,
+      result: {
+        userId: user.id,
+        name: user.name,
+        email: user.email,
+        token,
+        expiresIn: 60 * 60 * 1000,
+        role: {
+          roleId: user.roleId,
+          roleName: user.role.role,
+        },
       },
     };
   }
