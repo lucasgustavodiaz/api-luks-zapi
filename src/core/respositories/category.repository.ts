@@ -1,7 +1,7 @@
-import { Category } from '../entities/category';
+import { CategoryDto } from '../dto/CategoryDto';
 import { Result } from '../types/response';
 
 export default interface CategoryRepository {
-  getCategory(): Promise<Result<Category[]>>;
-  createCategory(category: string): Promise<Result<Category>>;
+  getCategory(): Promise<Result<CategoryDto[]>>;
+  createCategory(category: string): Promise<Result<CategoryDto>>;
 }
