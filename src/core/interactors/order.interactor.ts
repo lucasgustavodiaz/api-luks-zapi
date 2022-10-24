@@ -4,6 +4,8 @@ import { Result } from '../types/response';
 import PaymentRepository from '../respositories/payment.repository';
 import { Currencies, PaymentItem } from '../dto/mercadopago';
 
+//getOrder - No tendria ninguna dependencia
+
 export const createOrderInteractor =
   (orderRepository: OrderRepository, paymentRepository: PaymentRepository) =>
   async (
@@ -30,6 +32,7 @@ export const createOrderInteractor =
     const preference = await paymentRepository.createPreference({
       external_reference: newOrder.result.id.toString(),
       items: paymentItems,
+      shipmentCost: OrderRequestDto.shippingPrice,
     });
 
     //Restornamos el orderId y el init_point

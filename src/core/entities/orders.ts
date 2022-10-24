@@ -1,15 +1,15 @@
 export interface OrderItems {
-  id: number;
+  id?: number;
   quantity: number;
   unitPrice: number;
-  ordersId: number;
+  ordersId?: number;
   productsId: number;
 }
 
 export interface Order {
   id: number;
-  paymentId: string;
-  merchanOrderId: string;
+  paymentId: string | null;
+  merchanOrderId: string | null;
   createdAt: Date;
   updatedAt: Date;
   userId: number;

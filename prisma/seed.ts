@@ -25,79 +25,102 @@ async function main() {
   //   ],
   // });
 
-  await prisma.products.createMany({
+  // await prisma.products.createMany({
+  //   data: [
+  //     {
+  //       name: 'Pizza Tranca',
+  //       imgUrl: '/assets/pizza1.jpg',
+  //       categoryId: 1,
+  //       description:
+  //         'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Pizza Mix',
+  //       imgUrl: '/assets/pizza2.jpg',
+  //       categoryId: 1,
+  //       description:
+  //         'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Pizza Zaa',
+  //       imgUrl: '/assets/pizza2.jpg',
+  //       categoryId: 1,
+  //       description:
+  //         'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Burger Zarpada',
+  //       imgUrl: '/assets/burger1.jpg',
+  //       categoryId: 2,
+  //       description:
+  //         'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Burger en la pera',
+  //       imgUrl: '/assets/burger2.jpg',
+  //       categoryId: 2,
+  //       description:
+  //         'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Burger Cheta',
+  //       imgUrl: '/assets/burger1.jpg',
+  //       categoryId: 2,
+  //       description:
+  //         'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Sambuchito 1',
+  //       imgUrl: '/assets/sanbu1.jpg',
+  //       categoryId: 3,
+  //       description:
+  //         'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Sambuchito 2',
+  //       imgUrl: '/assets/sanbu2.jpg',
+  //       categoryId: 3,
+  //       description:
+  //         'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
+  //       price: 100,
+  //     },
+  //     {
+  //       name: 'Sambuchito 1',
+  //       imgUrl: '/assets/sanbu1.jpg',
+  //       categoryId: 3,
+  //       description:
+  //         'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
+  //       price: 100,
+  //     },
+  //   ],
+  // });
+
+  await prisma.states.createMany({
     data: [
       {
-        name: 'Pizza Tranca',
-        imgUrl: '/assets/pizza1.jpg',
-        categoryId: 1,
-        description:
-          'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
-        price: 100,
+        state: 'active',
       },
       {
-        name: 'Pizza Mix',
-        imgUrl: '/assets/pizza2.jpg',
-        categoryId: 1,
-        description:
-          'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
-        price: 100,
+        state: 'pending',
       },
       {
-        name: 'Pizza Zaa',
-        imgUrl: '/assets/pizza2.jpg',
-        categoryId: 1,
-        description:
-          'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
-        price: 100,
+        state: 'cancelled',
       },
       {
-        name: 'Burger Zarpada',
-        imgUrl: '/assets/burger1.jpg',
-        categoryId: 2,
-        description:
-          'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
-        price: 100,
+        state: 'disabled',
       },
       {
-        name: 'Burger en la pera',
-        imgUrl: '/assets/burger2.jpg',
-        categoryId: 2,
-        description:
-          'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
-        price: 100,
+        state: 'approved',
       },
       {
-        name: 'Burger Cheta',
-        imgUrl: '/assets/burger1.jpg',
-        categoryId: 2,
-        description:
-          'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
-        price: 100,
-      },
-      {
-        name: 'Sambuchito 1',
-        imgUrl: '/assets/sanbu1.jpg',
-        categoryId: 3,
-        description:
-          'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
-        price: 100,
-      },
-      {
-        name: 'Sambuchito 2',
-        imgUrl: '/assets/sanbu2.jpg',
-        categoryId: 3,
-        description:
-          'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
-        price: 100,
-      },
-      {
-        name: 'Sambuchito 1',
-        imgUrl: '/assets/sanbu1.jpg',
-        categoryId: 3,
-        description:
-          'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
-        price: 100,
+        state: 'rejected',
       },
     ],
   });

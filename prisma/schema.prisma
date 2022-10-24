@@ -60,31 +60,34 @@ model Products {
 
 model States {
   id     Int      @id @default(autoincrement())
-  state  String
+  state  String   @unique
   Orders Orders[]
 }
 
 //Orders
 model Orders {
-  id             Int          @id @default(autoincrement())
-  user           User         @relation(fields: [userId], references: [id])
-  status         States       @relation(fields: [statusId], references: [id])
-  paymentId      String?
-  merchanOrderId String?
-  shippingPrice  Float
-  subtotal       Float
-  total          Float
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  userId         Int
-  statusId       Int
-  OrderItems     OrderItems[]
+  id              Int               @id @default(autoincrement())
+  user            User              @relation(fields: [userId], references: [id])
+  status          States            @relation(fields: [statusId], references: [id])
+  paymentId       String?
+  merchanOrderId  String?
+  shippingPrice   Float
+  subtotal        Float
+  total           Float
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  userId          Int
+  statusId        Int
+  OrderItems      OrderItems[]
+  ShippingDetails ShippingDetails[]
 }
 
 model ShippingDetails {
   id        Int    @id @default(autoincrement())
   domicilio String
   localidad String
+  order     Orders @relation(fields: [ordersId], references: [id])
+  ordersId  Int
 }
 
 model OrderItems {
