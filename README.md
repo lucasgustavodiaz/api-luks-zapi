@@ -32,10 +32,10 @@
      npm run seed
   ```
 - Realizar el build de typescript
-  - Modificar el entrypoint de la app (./dis/src/index.js)
+  - Modificar el entrypoint de la app (./dis/src/server.js)
   - Agregar los scripts "start" y "build"
   - Tener en cuenta los rootDirs y outDir en tsconfig.json
-- Crear el archivo Procfile en el root del proyecto ("web: node dist/src/index.js")
+- Crear el archivo Procfile en el root del proyecto ("web: node dist/src/server.js")
 
 ```javascript
 // EndPoints para test
