@@ -37,7 +37,7 @@
   - Tener en cuenta los rootDirs y outDir en tsconfig.json
 - Crear el archivo Procfile en el root del proyecto ("web: node dist/src/index.js")
 
-```json
+```javascript
 // EndPoints para test
 // https://api-luks-zapi.herokuapp.com/
 
