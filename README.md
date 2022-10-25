@@ -36,3 +36,69 @@
   - Agregar los scripts "start" y "build"
   - Tener en cuenta los rootDirs y outDir en tsconfig.json
 - Crear el archivo Procfile en el root del proyecto ("web: node dist/src/index.js")
+
+```json
+// EndPoints para test
+// https://api-luks-zapi.herokuapp.com/
+
+// Crear usuario admin POST
+// https://api-luks-zapi.herokuapp.com/api/v1/auth/signin
+
+{
+  "name": "Test",
+  "email": "test@test.com",
+  "password": "test123",
+  "roleId": 1
+}
+
+// Crear cliente POST
+// https://api-luks-zapi.herokuapp.com/api/v1/auth/signin
+
+{
+  "name": "Cliente",
+  "email": "cliente@cliente.com",
+  "password": "cliente123",
+  "roleId": 2
+}
+
+//Login POST
+// https://api-luks-zapi.herokuapp.com/api/v1/auth/login
+
+{
+  "email": "cliente@cliente.com",
+  "password": "cliente123"
+}
+
+//Login POST
+// https://api-luks-zapi.herokuapp.com/api/v1/auth/login
+
+{
+  "email": "cliente@cliente.com",
+  "password": "cliente123"
+}
+
+//Ver categorias GET
+// https://api-luks-zapi.herokuapp.com/api/v1/category
+
+// Crear Orden POST
+// https://api-luks-zapi.herokuapp.com/api/v1/orders
+
+{
+  "userId": 1,
+  "shippingDetails": {
+    "domicilio": "T. Fels 785",
+    "localidad": "Santa Rosa"
+  },
+  "items": [
+    {
+      "title": "Pizza Tranca",
+      "quantity": 1,
+      "unitPrice": 100,
+      "productId": 2
+    }
+  ],
+  "shippingPrice": 100,
+  "subtotal": 100,
+  "total": 200
+}
+```
