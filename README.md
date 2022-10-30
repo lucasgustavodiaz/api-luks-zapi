@@ -69,14 +69,6 @@
   "password": "cliente123"
 }
 
-//Login POST
-// https://api-luks-zapi.herokuapp.com/api/v1/auth/login
-
-{
-  "email": "cliente@cliente.com",
-  "password": "cliente123"
-}
-
 //Ver categorias GET
 // https://api-luks-zapi.herokuapp.com/api/v1/category
 
