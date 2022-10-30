@@ -74,6 +74,7 @@
 
 // Crear Orden POST
 // https://api-luks-zapi.herokuapp.com/api/v1/orders
+// Authorization = Bearer token
 
 {
   "userId": 1,
